@@ -2,12 +2,13 @@ import { StripeFactory } from "./providers/stripe/StripeFactory";
 import { PaypalFactory } from "./providers/paypal/PaypalFactory";
 import { AppleFactory } from "./providers/apple/AppleFactory";
 import { PaymentContext } from "./app/PaymentContext";
+import { PaymentProviderFactory } from "./core/PaymentProviderFactory";
 
 // Отримуємо провайдера з командного рядка
 const provider = process.argv[2]?.toLowerCase() || "stripe";
 
 // Створюємо відповідну фабрику
-let factory;
+let factory: PaymentProviderFactory;
 switch (provider) {
   case "stripe":
     factory = new StripeFactory();
